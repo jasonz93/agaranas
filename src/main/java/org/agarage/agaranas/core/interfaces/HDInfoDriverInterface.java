@@ -9,6 +9,5 @@ import java.util.List;
  * Created by Nicholas on 2016/6/14.
  */
 public interface HDInfoDriverInterface extends DriverInterface {
-    List<StorageAdapter> getStorageAdapters();
     List<HDInfo> getHDInfos();
 }

@@ -22,32 +22,6 @@ public class WindowsHDInfoDriver implements HDInfoDriverInterface {
     private final static int BUFFER_SIZE = 4096;
 
     @Override
-    public List<StorageAdapter> getStorageAdapters() {
-        List<StorageAdapter> storageAdapters = new ArrayList<StorageAdapter>();
-        Runtime runtime = Runtime.getRuntime();
-        try {
-            Process process = runtime.exec("wmic idecontroller");
-            byte[] buffer = new byte[BUFFER_SIZE];
-            int count;
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            while ((count = process.getInputStream().read(buffer)) != -1) {
-                baos.write(buffer, 0, count);
-            }
-            String result = baos.toString("GBK");
-            List<Map<String, String>> adapterMaps = CMDUtils.tableToMaps(result);
-            for (Map<String, String> adapterMap : adapterMaps) {
-                StorageAdapter storageAdapter = new StorageAdapter();
-                storageAdapter.setName(adapterMap.get("Name"));
-                storageAdapters.add(storageAdapter);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            return storageAdapters;
-        }
-    }
-
-    @Override
     public List<HDInfo> getHDInfos() {
         List<HDInfo> hdInfos = new ArrayList<HDInfo>();
         Runtime runtime = Runtime.getRuntime();

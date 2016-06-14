@@ -9,7 +9,7 @@ public class HDInfo {
     private String id;
     private String name;
     private Long capacity;
-    private Map<Integer, SMARTValue> smart;
+    private SMARTStatus smartStatus;
     private StorageAdapter adapter;
 
     public String getName() {
@@ -28,14 +28,6 @@ public class HDInfo {
         this.capacity = capacity;
     }
 
-    public Map<Integer, SMARTValue> getSmart() {
-        return smart;
-    }
-
-    public void setSmart(Map<Integer, SMARTValue> smart) {
-        this.smart = smart;
-    }
-
     public StorageAdapter getAdapter() {
         return adapter;
     }
@@ -50,5 +42,17 @@ public class HDInfo {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public SMARTStatus getSmartStatus() {
+        return smartStatus;
+    }
+
+    public void setSmartStatus(SMARTStatus smartStatus) {
+        this.smartStatus = smartStatus;
+    }
+
+    public enum  SMARTStatus {
+        UNAVAILABLE, DISABLED, ENABLED;
     }
 }

@@ -37,10 +37,4 @@ public class HDInfoFeature implements FeatureInterface {
     public List<HDInfo> getHDInfos() {
         return hdInfoDriver.getHDInfos();
     }
-
-    @RequestMapping("/api/storage/adapters")
-    @ResponseBody
-    public List<StorageAdapter> getStorageAdapters() {
-        return hdInfoDriver.getStorageAdapters();
-    }
 }

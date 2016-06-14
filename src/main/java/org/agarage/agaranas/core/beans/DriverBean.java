@@ -1,5 +1,6 @@
 package org.agarage.agaranas.core.beans;
 
+import org.agarage.agaranas.core.drivers.LinuxHDInfoDriver;
 import org.agarage.agaranas.core.drivers.WindowsHDInfoDriver;
 import org.agarage.agaranas.core.interfaces.HDInfoDriverInterface;
 import org.springframework.context.annotation.Bean;
@@ -15,7 +16,7 @@ public class DriverBean {
         if (isWindows()) {
             return new WindowsHDInfoDriver();
         } else {
-            return null;
+            return new LinuxHDInfoDriver();
         }
     }
 
